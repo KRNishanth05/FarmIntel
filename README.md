@@ -1,6 +1,6 @@
 # 🌿 FarmIntel — Multilingual Smart Farming Assistant
 
-🔗 **[Live Demo]( https://krnishanth05.github.io/JeevanMitraAI/)** 
+🔗 **[Live Demo]( https://krnishanth05.github.io/FarmIntel/)** 
 
 FarmIntel is a web app that helps Indian farmers with:
 
@@ -19,7 +19,7 @@ GitHub.
 ## Project structure
 
 ```
-JeevanMitraAI/
+FarmIntel/
 ├── index.html          # Static site (HTML/CSS/JS) — the UI
 ├── style.css
 ├── script.js
