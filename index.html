@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmIntel — Smarter Farms, Brighter Tomorrows</title>
+    <link rel="icon" type="image/png" href="assets/farmintel_emblem.png">
+    <!-- Google Fonts: Plus Jakarta Sans & Handwritten Accents -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Enable vertical-scroll reveal states before first paint.
+        // Failsafe: if script.js never initializes, show everything anyway.
+        document.documentElement.classList.add('js-reveal');
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                if (!window.__scrollExperienceReady) {
+                    document.documentElement.classList.remove('js-reveal');
+                }
+            }, 1500);
+        });
+    </script>
+</head>
+
+<body class="logged-out">
+
+    <div class="app-container">
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar" id="appSidebar">
+            <!-- Brand Header -->
+            <div class="sidebar-brand">
+                <div class="brand-icon-wrapper">
+                    <img class="brand-logo-img" src="assets/farmintel_emblem.png" alt="FarmIntel logo">
+                </div>
+                <div class="brand-info">
+                    <h1 class="brand-title">FarmIntel</h1>
+                    <p class="brand-subtitle" data-i18n="brand_subtitle">Smarter Farms<br>Brighter Tomorrows</p>
+                </div>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="sidebar-nav">
+                <!-- Item 1: Crop Guidance (Active) -->
+                <button class="nav-item active" id="nav-crop-guidance" onclick="switchMainTab('crop-guidance')">
+                    <div class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                            <path d="M12 22v-9" />
+                            <path d="M12 13a5 5 0 0 0 5-5c0-3-2-5-5-5-3 0-5 2-5 5a5 5 0 0 0 5 5z" />
+                            <path d="M12 13a8 8 0 0 0-7 4" />
+                            <path d="M12 13a8 8 0 0 1 7 4" />
+                        </svg>
+                    </div>
+                    <div class="nav-text">
+                        <span class="nav-label" data-i18n="nav_crop_guidance">Crop Guidance</span>
+                        <span class="nav-desc" data-i18n="nav_crop_desc">Recommendations for your farm</span>
+                    </div>
+                </button>
+
+                <!-- Item 2: Farm Management -->
+                <button class="nav-item" id="nav-farm-management" onclick="switchMainTab('farm-management')">
+                    <div class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                            <path d="M3 18l6-4 6 4 6-4" />
+                            <path d="M3 12l6-4 6 4 6-4" />
+                            <path d="M3 6l6-4 6 4 6-4" />
+                        </svg>
+                    </div>
+                    <div class="nav-text">
+                        <span class="nav-label" data-i18n="nav_farm_management">Farm Management</span>
+                        <span class="nav-desc" data-i18n="nav_farm_desc">Track your land, inputs and activities</span>
+                    </div>
+                </button>
+
+                <!-- Item 3: Market Insights -->
+                <button class="nav-item" id="nav-market-insights" onclick="switchMainTab('market-insights')">
+                    <div class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                            <line x1="18" y1="20" x2="18" y2="10" />
+                            <line x1="12" y1="20" x2="12" y2="4" />
+                            <line x1="6" y1="20" x2="6" y2="14" />
+                        </svg>
+                    </div>
+                    <div class="nav-text">
+                        <span class="nav-label" data-i18n="nav_market_insights">Market Insights</span>
+                        <span class="nav-desc" data-i18n="nav_market_desc">Prices, demand and opportunities</span>
+                    </div>
+                </button>
+
+                <!-- Item 4: Learning Hub -->
+                <button class="nav-item" id="nav-learning-hub" onclick="switchMainTab('learning-hub')">
+                    <div class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                        </svg>
+                    </div>
+                    <div class="nav-text">
+                        <span class="nav-label" data-i18n="nav_learning_hub">Learning Hub</span>
+                        <span class="nav-desc" data-i18n="nav_learning_desc">Simple knowledge for better farming</span>
+                    </div>
+                </button>
+            </nav>
+
+            <!-- Bottom Sidebar Hills Artwork & Calligraphy -->
+            <div class="sidebar-footer">
+                <div class="sidebar-hills-art">
+                    <img src="assets/sidebar_hills.jpg" alt="Terraced Farm Fields" class="hills-image">
+                </div>
+                <p class="sidebar-calligraphy" data-i18n="sidebar_calligraphy">Healthy Farms<br>Stronger India</p>
+            </div>
+        </aside>
+
+        <!-- MAIN APP WRAPPER -->
+        <main class="main-wrapper">
+            <!-- TOP HEADER -->
+            <header class="top-header">
+                <div class="header-slogan" data-i18n="header_slogan">
+                    Real Insights. Healthier Harvests. A Stronger Tomorrow.
+                </div>
+
+                <div class="header-actions">
+                    <!-- Search bar with dynamic dropdown -->
+                    <div class="header-search-wrap" style="position:relative;">
+                        <div class="header-search">
+                            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                width="16" height="16">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            </svg>
+                            <input type="text" id="globalSearchInput" placeholder="Search crops, tips, soil, help..."
+                                data-i18n-placeholder="search_placeholder" oninput="handleGlobalSearch(event)" onfocus="handleGlobalSearch(event)"
+                                onkeydown="if(event.key==='Escape')closeSearchResults();">
+                            <button id="searchClearBtn" onclick="clearGlobalSearch()" style="background:none;border:none;cursor:pointer;color:#94a3b8;display:none;padding:0 2px;" title="Clear search">✕</button>
+                        </div>
+                        <div id="globalSearchResults" class="search-results-dropdown" style="display:none;"></div>
+                    </div>
+
+                    <!-- Architecture Modal Quick Access -->
+                    <button class="header-arch-btn" onclick="toggleArchitectureModal()"
+                        title="View System Architecture & ML Pipeline" data-i18n="btn_architecture">
+                        📐 Architecture
+                    </button>
+
+                    <!-- Language Selector -->
+                    <div class="header-lang-wrap">
+                        <select id="langSelect" onchange="setLanguage(this.value)" class="header-lang-select"
+                            title="Choose Language / ಭಾಷೆ / भाषा">
+                            <option value="en" selected>🇬🇧 EN (English)</option>
+                            <option value="kn">🇮🇳 ಕನ್ನಡ (Kannada)</option>
+                            <option value="hi">🇮🇳 हिन्दी (Hindi)</option>
+                            <option value="ta">🇮🇳 தமிழ் (Tamil)</option>
+                            <option value="te">🇮🇳 తెలుగు (Telugu)</option>
+                            <option value="ml">🇮🇳 മലയാളം (Malayalam)</option>
+                        </select>
+                    </div>
+
+                    <!-- Notification Bell with Interactive Dropdown -->
+                    <div class="header-notification-wrap" style="position:relative;">
+                        <button class="header-btn bell-btn" id="headerBellBtn" onclick="toggleNotificationPanel()" title="Crop Timings, Water, Soil & Farm Notifications">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                            </svg>
+                            <span class="bell-dot" id="bellBadgeCount">4</span>
+                        </button>
+                        <div id="notificationDropdown" class="notification-dropdown-panel" style="display:none;"></div>
+                    </div>
+
+                    <!-- Farmer Authentication Header Container -->
+                    <div id="headerAuthContainer" class="header-auth-container">
+                        <!-- State 2: Logged In (Shown dynamically when active user exists) -->
+                        <div class="farmer-profile-wrap" id="farmerProfileWrap" style="position:relative; display:none;">
+                            <div class="farmer-profile" onclick="toggleProfileDropdown()"
+                                title="Click to view profile or sign out">
+                                <div class="farmer-avatar-badge" id="headerFarmerBadge">👤</div>
+                                <div class="farmer-info">
+                                    <span class="farmer-name" id="header-farmer-name">Farmer</span>
+                                    <span class="farmer-role" id="header-farmer-role" data-i18n="farmer_role">Farmer</span>
+                                </div>
+                                <svg class="profile-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" width="14" height="14">
+                                    <polyline points="6 9 12 15 18 9" />
+                                </svg>
+                            </div>
+
+                            <!-- Farmer Profile Dropdown Menu -->
+                            <div class="farmer-profile-dropdown" id="farmerProfileDropdown" style="display:none;">
+                                <div class="fp-drop-header">
+                                    <div class="fp-avatar-badge-lg" id="fpDropBadge">👤</div>
+                                    <div>
+                                        <h4 id="fp-drop-name">Farmer</h4>
+                                        <span class="fp-drop-id" id="fp-drop-phone-header">+91 ----------</span>
+                                    </div>
+                                </div>
+                                <div class="fp-drop-details">
+                                    <div class="fp-detail-row">
+                                        <span class="fp-label" data-i18n="profile_address">Address:</span>
+                                        <span class="fp-val" id="fp-drop-address">--</span>
+                                    </div>
+                                    <div class="fp-detail-row">
+                                        <span class="fp-label" data-i18n="profile_mobile">Mobile:</span>
+                                        <span class="fp-val" id="fp-drop-phone">--</span>
+                                    </div>
+                                </div>
+                                <div class="fp-drop-actions">
+                                    <button class="btn-profile-logout" onclick="farmerLogout()" data-i18n="btn_logout">🚪 Sign Out</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- DASHBOARD BODY CONTENT -->
+            <div class="app-body">
+                <!-- ============================================== -->
+                <!-- VIEW: CROP GUIDANCE (Default view matching mockup) -->
+                <!-- ============================================== -->
+                <div class="view-content active" id="view-crop-guidance">
+                    <div class="dashboard-grid">
+                        <!-- LEFT COLUMN: Form Wizard -->
+                        <div class="wizard-col">
+                            <!-- Hero Greeting Banner -->
+                            <div class="greeting-banner">
+                                <div class="greeting-content">
+                                    <span class="greeting-hello" data-i18n="greeting_hello">Namaste,</span>
+                                    <h2 class="greeting-title" data-i18n="greeting_title">Let's find the best crop for
+                                        your farm</h2>
+                                    <p class="greeting-subtitle" data-i18n="greeting_subtitle">
+                                        Tell us a few details about your farm, and we'll suggest the most suitable crops
+                                        based on soil, water and local conditions.
+                                    </p>
+                                </div>
+                                <div class="greeting-art-wrapper">
+                                    <img src="assets/hero_farm.jpg" alt="Sunny Farm Cottage" class="greeting-art-img">
+                                    <div class="greeting-calligraphy" data-i18n="greeting_calligraphy">
+                                        <span>Better</span>
+                                        <span>Crops</span>
+                                        <span>Happier</span>
+                                        <span>Tomorrows</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3-Step Stepper -->
+                            <div class="stepper-card">
+                                <div class="step-item active" id="step-item-1">
+                                    <div class="step-circle active" id="step-circle-1">1</div>
+                                    <div class="step-info">
+                                        <span class="step-title" data-i18n="step1_title">Farm Profile</span>
+                                        <span class="step-sub" data-i18n="step1_sub">Tell us about your farm</span>
+                                    </div>
+                                </div>
+                                <div class="step-line" id="step-line-1"></div>
+                                <div class="step-item" id="step-item-2">
+                                    <div class="step-circle" id="step-circle-2">2</div>
+                                    <div class="step-info">
+                                        <span class="step-title" data-i18n="step2_title">Get Recommendations</span>
+                                        <span class="step-sub" data-i18n="step2_sub">We analyse your data</span>
+                                    </div>
+                                </div>
+                                <div class="step-line" id="step-line-2"></div>
+                                <div class="step-item" id="step-item-3">
+                                    <div class="step-circle" id="step-circle-3">3</div>
+                                    <div class="step-info">
+                                        <span class="step-title" data-i18n="step3_title">Plan Ahead</span>
+                                        <span class="step-sub" data-i18n="step3_sub">Take next steps</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card: Your Farm Details -->
+                            <div class="farm-details-card">
+                                <div style="margin-bottom:1rem;">
+                                    <h3 class="card-heading" data-i18n="farm_details_heading">Your Farm Details</h3>
+                                    <p class="card-subheading" data-i18n="farm_details_sub">This helps us find the most suitable crops for your land.</p>
+                                </div>
+
+                                <!-- 2x2 Form Input Grid -->
+                                <div class="form-grid-2x2">
+                                    <!-- Field 1: District / Location -->
+                                    <div class="field-group">
+                                        <label class="field-label" data-i18n="label_district">District /
+                                            Location</label>
+                                        <div class="input-select-box">
+                                            <span class="field-icon">📍</span>
+                                            <select id="farm-district" onchange="onDistrictChange()"
+                                                class="clean-select">
+                                                <option value="maharashtra_nashik" selected>Nashik, Maharashtra</option>
+                                                <option value="maharashtra_pune">Pune, Maharashtra</option>
+                                                <option value="karnataka_kolar">Kolar, Karnataka</option>
+                                                <option value="karnataka_bengaluru_rural">Bengaluru Rural, Karnataka
+                                                </option>
+                                                <option value="karnataka_mandya">Mandya, Karnataka</option>
+                                                <option value="karnataka_belagavi">Belagavi, Karnataka</option>
+                                                <option value="karnataka_shimoga">Shivamogga (Shimoga), Karnataka
+                                                </option>
+                                                <option value="ap_kurnool">Kurnool, Andhra Pradesh</option>
+                                                <option value="telangana_warangal">Warangal, Telangana</option>
+                                                <option value="tamilnadu_thanjavur">Thanjavur, Tamil Nadu</option>
+                                                <option value="kerala_palakkad">Palakkad, Kerala</option>
+                                            </select>
+                                            <svg class="select-chevron" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <polyline points="6 9 12 15 18 9" />
+                                            </svg>
+                                        </div>
+                                        <span class="field-helper" data-i18n="helper_district">Select your district for
+                                            local recommendations</span>
+                                    </div>
+
+                                    <!-- Field 2: Soil Type -->
+                                    <div class="field-group">
+                                        <label class="field-label" data-i18n="label_soil">Soil Type</label>
+                                        <div class="input-select-box">
+                                            <span class="field-icon">🪨</span>
+                                            <select id="farm-soil" class="clean-select">
+                                                <option value="black_cotton" selected>Black (Regur)</option>
+                                                <option value="red_loam">Red Sandy Loam</option>
+                                                <option value="alluvial">Alluvial River Soil</option>
+                                                <option value="clay_loam">Clay Loam</option>
+                                                <option value="laterite">Laterite Soil</option>
+                                                <option value="sandy_loam">Sandy Loam</option>
+                                            </select>
+                                            <svg class="select-chevron" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <polyline points="6 9 12 15 18 9" />
+                                            </svg>
+                                        </div>
+                                        <span class="field-helper" data-i18n="helper_soil">Choose the main soil type in
+                                            your farm</span>
+                                    </div>
+
+                                    <!-- Field 3: Farm Area -->
+                                    <div class="field-group">
+                                        <label class="field-label" data-i18n="label_area">Farm Area</label>
+                                        <div class="area-composite-box">
+                                            <div class="area-input-wrapper">
+                                                <span class="field-icon">🌾</span>
+                                                <input type="number" id="farm-land" value="5" min="0.5" max="500"
+                                                    step="0.5" class="clean-number-input">
+                                            </div>
+                                            <div class="area-unit-wrapper">
+                                                <select id="farm-land-unit" class="unit-select">
+                                                    <option value="acre" selected>Acres</option>
+                                                    <option value="hectare">Hectares</option>
+                                                    <option value="gunta">Guntas</option>
+                                                </select>
+                                                <svg class="select-chevron" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <polyline points="6 9 12 15 18 9" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <span class="field-helper" data-i18n="helper_area">Enter your total cultivable
+                                            area</span>
+                                    </div>
+
+                                    <!-- Field 4: Water Source -->
+                                    <div class="field-group">
+                                        <label class="field-label" data-i18n="label_water">Water Source</label>
+                                        <div class="input-select-box">
+                                            <span class="field-icon">💧</span>
+                                            <select id="farm-water" class="clean-select">
+                                                <option value="moderate" selected>Borewell</option>
+                                                <option value="high">Canal / River</option>
+                                                <option value="low">Rainfed (Low)</option>
+                                            </select>
+                                            <svg class="select-chevron" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <polyline points="6 9 12 15 18 9" />
+                                            </svg>
+                                        </div>
+                                        <span class="field-helper" data-i18n="helper_water">Select your primary source
+                                            of irrigation</span>
+                                    </div>
+                                </div>
+
+                                <!-- Hidden inputs for economic and NPK calibration models -->
+                                <input type="hidden" id="farm-budget" value="150000">
+                                <input type="hidden" id="farm-prev-crop" value="fallow">
+                                <input type="hidden" id="farm-goal" value="higher_profit">
+                                <input type="hidden" id="n" value="50">
+                                <input type="hidden" id="p" value="45">
+                                <input type="hidden" id="k" value="75">
+                                <input type="hidden" id="ph" value="7.2">
+
+                                <!-- Bottom Action Row -->
+                                <div class="farm-actions-row">
+                                    <button class="btn-primary-recommend" id="recommendBtn"
+                                        onclick="generateFarmPlan()">
+                                        <span data-i18n="btn_get_recommendations">Get Crop Recommendations</span>
+                                        <span class="arrow-right">➔</span>
+                                    </button>
+
+                                    <div class="security-pill">
+                                        <span class="pill-leaf-icon">🌱</span>
+                                        <span class="pill-text" data-i18n="security_pill_text">Your information is safe
+                                            and only used to give you better recommendations.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- RIGHT COLUMN: Your Top Recommendation Card -->
+                        <div class="recommendation-col" id="crop-result-area">
+                            <div class="empty-rec-card">
+                                <div class="empty-rec-icon">🌱</div>
+                                <h3 class="empty-rec-title" data-i18n="empty_rec_title">Personalized Crop Recommendation</h3>
+                                <p class="empty-rec-desc" data-i18n="empty_rec_desc">
+                                    Select your District, Soil Type, Farm Area, and Water Source on the left, then click <strong>Get Crop Recommendations</strong> to view tailored crop options and profitability insights.
+                                </p>
+                                <button class="btn-primary-recommend" onclick="generateFarmPlan()">
+                                    <span data-i18n="btn_get_recommendations">Get Crop Recommendations</span>
+                                    <span class="arrow-right">➔</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================== -->
+                <!-- VIEW: DEDICATED FARMER SIGN IN PAGE -->
+                <!-- ============================================== -->
+                <div class="view-content" id="view-login-page">
+                    <div class="auth-page-container">
+                    <div class="auth-brand-header">
+                        <img class="auth-brand-logo" src="assets/farmintel_logo.png" alt="FarmIntel — AI-Powered Smart Farming Assistant">
+                    </div>
+                    <div class="auth-card-wrapper">
+                            <!-- Left: Dedicated Login Form Card -->
+                            <div class="auth-card">
+                                <div class="auth-card-header">
+                                    <div class="auth-badge-pill">
+                                        <span>🇮🇳</span>
+                                        <span data-i18n="login_kisan_badge">FarmIntel Portal</span>
+                                    </div>
+                                    <h2 class="auth-title" data-i18n="login_heading">Farmer Sign In</h2>
+                                    <p class="auth-subtitle" data-i18n="login_sub_text">Enter your registered mobile number and password to access your personalized recommendations.</p>
+                                </div>
+
+                                <div id="loginAlertBox" class="auth-alert-box" style="display:none;"></div>
+
+                                <form id="farmerLoginForm" onsubmit="handleFarmerLogin(event)" class="auth-form">
+                                    <div class="auth-field-group">
+                                        <label class="auth-field-label" for="loginPhone" data-i18n="label_phone_number">Phone / Mobile Number</label>
+                                        <div class="auth-input-box">
+                                            <span class="auth-prefix">+91</span>
+                                            <input type="tel" id="loginPhone" class="auth-input"
+                                                placeholder="Enter 10-digit mobile number" pattern="[0-9]{10}" maxlength="10" required
+                                                data-i18n-placeholder="placeholder_phone_number">
+                                        </div>
+                                    </div>
+
+                                    <div class="auth-field-group">
+                                        <label class="auth-field-label" for="loginPassword" data-i18n="label_password">Password</label>
+                                        <div class="auth-input-box">
+                                            <span class="auth-icon">🔒</span>
+                                            <input type="password" id="loginPassword" class="auth-input"
+                                                placeholder="Enter your password" required
+                                                data-i18n-placeholder="placeholder_password">
+                                            <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('loginPassword', this)" title="Show/Hide Password">👁️</button>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn-auth-submit" id="loginSubmitBtn">
+                                        <span data-i18n="btn_login">Sign In</span>
+                                    </button>
+
+                                    <div class="auth-switch-prompt">
+                                        <span data-i18n="prompt_new_user">New user?</span>
+                                        <button type="button" class="auth-switch-link" onclick="switchMainTab('register-page')" data-i18n="link_create_account">Create your account</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================== -->
+                <!-- VIEW: DEDICATED FARMER REGISTRATION PAGE -->
+                <!-- ============================================== -->
+                <div class="view-content" id="view-register-page">
+                    <div class="auth-page-container">
+                    <div class="auth-brand-header">
+                        <img class="auth-brand-logo" src="assets/farmintel_logo.png" alt="FarmIntel — AI-Powered Smart Farming Assistant">
+                    </div>
+                    <div class="auth-card-wrapper">
+                            <!-- Left: Dedicated Registration Form Card -->
+                            <div class="auth-card">
+                                <div class="auth-card-header">
+                                    <div class="auth-badge-pill">
+                                        <span>🌱</span>
+                                        <span data-i18n="login_kisan_badge">FarmIntel Portal</span>
+                                    </div>
+                                    <h2 class="auth-title" data-i18n="register_heading">Create Farmer Account</h2>
+                                    <p class="auth-subtitle" data-i18n="register_sub_text">Register with your details to save your farm profile and get customized agricultural advisories.</p>
+                                </div>
+
+                                <div id="regAlertBox" class="auth-alert-box" style="display:none;"></div>
+
+                                <form id="farmerRegisterForm" onsubmit="handleFarmerRegister(event)" class="auth-form">
+                                    <div class="auth-field-group">
+                                        <label class="auth-field-label" for="regName" data-i18n="label_full_name">Full Name</label>
+                                        <div class="auth-input-box">
+                                            <span class="auth-icon">👤</span>
+                                            <input type="text" id="regName" class="auth-input"
+                                                placeholder="e.g. Anand Gowda / Suresh" required
+                                                data-i18n-placeholder="placeholder_full_name">
+                                        </div>
+                                    </div>
+
+                                    <div class="auth-field-group">
+                                        <label class="auth-field-label" for="regPhone" data-i18n="label_phone_number">Phone / Mobile Number</label>
+                                        <div class="auth-input-box">
+                                            <span class="auth-prefix">+91</span>
+                                            <input type="tel" id="regPhone" class="auth-input"
+                                                placeholder="Enter 10-digit mobile number" pattern="[0-9]{10}" maxlength="10" required
+                                                data-i18n-placeholder="placeholder_phone_number">
+                                        </div>
+                                    </div>
+
+                                    <div class="auth-field-group">
+                                        <label class="auth-field-label" for="regAddress" data-i18n="label_home_address">Home Address (Village / Town / District)</label>
+                                        <div class="auth-input-box">
+                                            <span class="auth-icon">🏠</span>
+                                            <input type="text" id="regAddress" class="auth-input"
+                                                placeholder="Enter your village, taluk, and district" required
+                                                data-i18n-placeholder="placeholder_home_address">
+                                        </div>
+                                    </div>
+
+                                    <div class="auth-field-group">
+                                        <label class="auth-field-label" for="regPassword" data-i18n="label_password">Password</label>
+                                        <div class="auth-input-box">
+                                            <span class="auth-icon">🔒</span>
+                                            <input type="password" id="regPassword" class="auth-input"
+                                                placeholder="Enter your password" required
+                                                data-i18n-placeholder="placeholder_password">
+                                            <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('regPassword', this)" title="Show/Hide Password">👁️</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="auth-field-group">
+                                        <label class="auth-field-label" for="regConfirmPassword" data-i18n="label_confirm_password">Confirm Password</label>
+                                        <div class="auth-input-box">
+                                            <span class="auth-icon">🔒</span>
+                                            <input type="password" id="regConfirmPassword" class="auth-input"
+                                                placeholder="Re-enter your password" required
+                                                data-i18n-placeholder="placeholder_confirm_password">
+                                            <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('regConfirmPassword', this)" title="Show/Hide Password">👁️</button>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn-auth-submit" id="regSubmitBtn">
+                                        <span data-i18n="btn_register">Create Account</span>
+                                    </button>
+
+                                    <div class="auth-switch-prompt">
+                                        <span data-i18n="prompt_existing_user">Already have an account?</span>
+                                        <button type="button" class="auth-switch-link" onclick="switchMainTab('login-page')" data-i18n="link_sign_in">Sign In here</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================== -->
+                <!-- VIEW: FARM MANAGEMENT (Yield Prediction & Activities) -->
+                <!-- ============================================== -->
+                <div class="view-content" id="view-farm-management">
+                    <div class="subpage-card">
+                        <div class="subpage-header">
+                            <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;">
+                                <div>
+                                    <h2>🚜 Farm Management & Precision Yield Analytics</h2>
+                                    <p>Adjust soil N-P-K & farm acreage to dynamically discover matching crops and compute exact harvest numbers.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="subpage-grid">
+                            <div class="inner-form-box">
+                                <h3>📊 Soil Nutrient & Acreage Inputs</h3>
+                                <p style="font-size:0.83rem;color:#64748b;margin:0.25rem 0 0.8rem;">Change sliders below to see recommended crops and harvest numbers update in real time.</p>
+
+                                <div class="slider-group">
+                                    <label class="field-label">Nitrogen (N): <span id="yn-value" style="font-weight:700;color:#0f766e;">120</span> kg/ha</label>
+                                    <input type="range" id="yn" min="0" max="450" value="120" step="5"
+                                        oninput="updateSlider('yn'); onFarmManagementInput();">
+                                </div>
+                                <div class="slider-group">
+                                    <label class="field-label">Phosphorus (P): <span id="yp-value" style="font-weight:700;color:#0f766e;">30</span> kg/ha</label>
+                                    <input type="range" id="yp" min="0" max="100" value="30" step="1"
+                                        oninput="updateSlider('yp'); onFarmManagementInput();">
+                                </div>
+                                <div class="slider-group">
+                                    <label class="field-label">Potassium (K): <span id="yk-value" style="font-weight:700;color:#0f766e;">80</span> kg/ha</label>
+                                    <input type="range" id="yk" min="0" max="400" value="80" step="5"
+                                        oninput="updateSlider('yk'); onFarmManagementInput();">
+                                </div>
+                                <div class="slider-group">
+                                    <label class="field-label">Area (Hectares): <span id="ya-value" style="font-weight:700;color:#0f766e;">2.0</span> ha</label>
+                                    <input type="range" id="ya" min="0.5" max="50" value="2.0" step="0.5"
+                                        oninput="updateSlider('ya'); onFarmManagementInput();">
+                                </div>
+
+                                <!-- Dynamically recommended crops container for given NPK -->
+                                <div id="farm-npk-recommendations" style="margin:1rem 0;padding:12px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;">
+                                    <div style="font-size:0.82rem;font-weight:700;color:#166534;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;">
+                                        <span>🌱 Top Recommended Crops for this N-P-K:</span>
+                                        <span style="font-size:0.75rem;color:#15803d;font-weight:600;">(Click to Select)</span>
+                                    </div>
+                                    <div id="farm-crop-chips" style="display:flex;gap:6px;flex-wrap:wrap;">
+                                        <!-- populated dynamically on slider move -->
+                                    </div>
+                                </div>
+
+                                <div class="form-group" style="margin-top:0.8rem;">
+                                    <label class="field-label">Selected Target Crop</label>
+                                    <select id="yield-crop" class="clean-select full-width" onchange="onYieldCropChange()">
+                                        <option value="rice" selected>🌾 Rice</option>
+                                    </select>
+                                </div>
+
+                                <button class="btn-primary-recommend" id="btn-get-estimation" onclick="predictYield()"
+                                    style="margin-top:1.1rem;width:100%;justify-content:center;font-size:0.95rem;font-weight:700;display:flex;align-items:center;gap:8px;padding:0.85rem;">
+                                    <span>⚡ Re-calculate All Numbers</span>
+                                    <span class="arrow-right">➔</span>
+                                </button>
+                            </div>
+                            <div class="inner-result-box" id="yield-results-card">
+                                <h3>📈 Forecasted Output & Yield Estimation</h3>
+                                <div id="yield-result-area" style="margin-top:1rem;">
+                                    <p style="color:#64748b;">Adjust sliders on the left to see recommended crops and forecasted output.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================== -->
+                <!-- VIEW: MARKET INSIGHTS (APMC Mandi Prices & Trends) -->
+                <!-- ============================================== -->
+                <div class="view-content" id="view-market-insights">
+                    <div class="subpage-card">
+                        <div class="subpage-header">
+                            <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;">
+                                <div>
+                                    <h2>💰 Live APMC Mandi Intelligence & Price Tracking</h2>
+                                    <p>Dual-source verified commodity rates fusing real-time <strong>data.gov.in</strong> Agmarknet API and <strong>2,032 dataset records</strong>.</p>
+                                </div>
+                                <div style="display:flex;align-items:center;gap:8px;background:#eff6ff;border:1px solid #bfdbfe;padding:6px 14px;border-radius:20px;font-size:0.8rem;color:#1e40af;font-weight:700;">
+                                    <span>🔒</span> <span>High Confidence Mandi Verification Engine</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- High Confidence Status Banner -->
+                        <div style="margin:1rem 0;background:linear-gradient(135deg,#f8fafc,#f0fdf4);border:1px solid #cbd5e1;border-radius:12px;padding:14px;">
+                            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px;">
+                                <div style="display:flex;align-items:center;gap:8px;">
+                                    <span style="font-size:1.4rem;">🏛️</span>
+                                    <div>
+                                        <div style="font-weight:700;color:#0f172a;font-size:0.95rem;">High Confidentiality Mandi Benchmark</div>
+                                        <div style="font-size:0.8rem;color:#64748b;">Prices are finalized by evaluating real-time Agmarknet trades against historical modal bands.</div>
+                                    </div>
+                                </div>
+                                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                                    <span class="mandi-source-pill" style="font-size:0.75rem;padding:4px 10px;border-radius:12px;background:#dbeafe;color:#1e40af;font-weight:700;">
+                                        🌐 data.gov.in API (579b...4bb4)
+                                    </span>
+                                    <span class="mandi-source-pill" style="font-size:0.75rem;padding:4px 10px;border-radius:12px;background:#dcfce7;color:#166534;font-weight:700;">
+                                        📊 2,032 Records Dataset
+                                    </span>
+                                    <span class="mandi-source-pill" style="font-size:0.75rem;padding:4px 10px;border-radius:12px;background:#fef3c7;color:#92400e;font-weight:700;">
+                                        🛡️ 95%–98% Confidence Rating
+                                    </span>
+                                </div>
+                            </div>
+                            <div style="display:flex;gap:10px;align-items:center;margin-top:10px;">
+                                <input type="text" id="mandi-search-input" placeholder="🔍 Search commodity (e.g. Rice, Cotton, Tomato, Onion) or Mandi center..."
+                                    style="width:100%;padding:8px 14px;border:1px solid #cbd5e1;border-radius:8px;font-size:0.9rem;"
+                                    oninput="filterMandiTable(this.value)">
+                            </div>
+                        </div>
+
+                        <!-- Price Chart -->
+                        <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:14px;margin-bottom:1.2rem;">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+                                <div style="font-weight:700;color:#1e293b;font-size:0.9rem;">📊 Modal Price Comparison Across Major Commodities (₹/Quintal)</div>
+                                <div style="font-size:0.8rem;color:#64748b;" id="market-date">Updated Live</div>
+                            </div>
+                            <canvas id="price-chart" style="width:100%;height:260px;display:block;"></canvas>
+                        </div>
+
+                        <div style="overflow-x:auto;">
+                            <table class="mandi-table">
+                                <thead>
+                                    <tr>
+                                        <th>Commodity</th>
+                                        <th>Final Confirmed Rate</th>
+                                        <th>Min – Max Range</th>
+                                        <th>Primary Mandi Hub</th>
+                                        <th>Verification Source</th>
+                                        <th>30-Day Trend</th>
+                                        <th>Daily Arrivals</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="price-table-body">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================== -->
+                <!-- VIEW: LEARNING HUB (Crop Guides & Disease Doctor) -->
+                <!-- ============================================== -->
+                <div class="view-content" id="view-learning-hub">
+                    <div class="subpage-card">
+                        <div class="subpage-header">
+                            <h2>📖 Agriculture Learning Hub & Plant Pathology</h2>
+                            <p>Expert growing handbooks, pest diagnostics, and AI leaf health scanning.</p>
+                        </div>
+                        <div class="subpage-grid">
+                            <div class="inner-form-box">
+                                <h3>🔬 AI Plant, Leaf & Branch Diagnostic Doctor</h3>
+                                <p style="font-size:0.85rem;color:#64748b;margin:0.5rem 0 1rem;">Upload a photo of leaves, branches, stem, or whole plant:</p>
+                                <div class="upload-dropzone" id="leaf-dropzone" onclick="document.getElementById('leaf-image').click()">
+                                    <div style="font-size:2.5rem;">📸</div>
+                                    <p style="font-weight:600;color:#1e293b;margin:0.4rem 0;">Click or drop photo of leaves, branches, or plant here</p>
+                                    <span style="font-size:0.8rem;color:#94a3b8;">Supports JPG, PNG, WEBP (Leaves, Stems, Branches & Whole Plant)</span>
+                                    <input type="file" id="leaf-image" accept="image/*" style="display:none"
+                                        onchange="previewImage(event)">
+                                </div>
+                                <div id="image-preview" style="margin-top:0.8rem;text-align:center;"></div>
+                                <button class="btn-primary-recommend"
+                                    style="margin-top:1rem;width:100%;justify-content:center;"
+                                    onclick="detectDisease()">
+                                    <span>Scan Plant Health & Detect Defects</span>
+                                    <span class="arrow-right">➔</span>
+                                </button>
+                                <div style="margin-top:1.2rem;">
+                                    <span
+                                        style="font-size:0.8rem;font-weight:700;color:#64748b;text-transform:uppercase;">Quick
+                                        Diagnostic Presets:</span>
+                                    <div style="display:flex;gap:0.4rem;margin-top:0.5rem;flex-wrap:wrap;">
+                                        <button class="demo-chip" onclick="demoDisease('healthy')">✅ Healthy Plant</button>
+                                        <button class="demo-chip" onclick="demoDisease('leaf_blight')">🍂 Leaf Blight & Spots</button>
+                                        <button class="demo-chip" onclick="demoDisease('branch_canker')">🪵 Branch Canker & Stem Wilt</button>
+                                        <button class="demo-chip" onclick="demoDisease('rust')">🔴 Leaf Rust</button>
+                                        <button class="demo-chip" onclick="demoDisease('powdery_mildew')">🌫️ Powdery Mildew</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="inner-result-box" id="disease-results-card">
+                                <h3>🌿 Pathology Diagnosis & Advisory</h3>
+                                <div id="disease-result-area" style="margin-top:1rem;">
+                                    <p style="color:#64748b;">Upload an image or pick a preset to see organic treatment
+                                        advisory.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- SCROLL PROGRESS + 3D GROWTH COMPANION (seed → crop, driven by page scroll) -->
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+    <div class="growth-companion" id="growthCompanion"
+        title="🌱 Scroll to grow — click to water!" aria-label="Crop growth companion">
+        <div class="gc-scene" id="gcScene">
+            <div class="gc-backdrop"></div>
+            <div class="gc-tilt" id="gcTilt">
+                <div class="gc-sway">
+                    <div class="gc-ground"></div>
+                    <div class="gc-seed" id="gcSeed"></div>
+                    <div class="gc-stem" id="gcStem">
+                        <div class="gc-leaf gc-leaf--r gc-leaf-1"></div>
+                        <div class="gc-leaf gc-leaf--l gc-leaf-2"></div>
+                        <div class="gc-leaf gc-leaf--r gc-leaf-3"></div>
+                        <div class="gc-leaf gc-leaf--l gc-leaf-4"></div>
+                        <div class="gc-bud"></div>
+                        <div class="gc-flower">
+                            <span style="--r:0deg"></span>
+                            <span style="--r:72deg"></span>
+                            <span style="--r:144deg"></span>
+                            <span style="--r:216deg"></span>
+                            <span style="--r:288deg"></span>
+                        </div>
+                        <div class="gc-grain gc-grain-1"></div>
+                        <div class="gc-grain gc-grain-2"></div>
+                        <div class="gc-grain gc-grain-3"></div>
+                    </div>
+                    <div class="gc-spark gc-spark-1">✦</div>
+                    <div class="gc-spark gc-spark-2">✦</div>
+                    <div class="gc-spark gc-spark-3">✦</div>
+                </div>
+            </div>
+        </div>
+        <div class="gc-label" id="gcLabel">
+            <span class="gc-stage-icon" id="gcStageIcon">🌰</span>
+            <span class="gc-stage-text" id="gcStageText">Seed</span>
+            <b class="gc-pct" id="gcPct">0%</b>
+        </div>
+    </div>
+
+    <!-- FLOATING CHAT WIDGET -->
+    <div class="chat-panel" id="chatPanel">
+        <div class="chat-header">
+            <div class="chat-header-title">
+                <span class="bot-status-dot"></span>
+                <h3 data-i18n="chat_header_title">JeevanMitra AI Companion</h3>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+                <button id="chatVoiceToggleBtn" onclick="toggleChatVoiceMute()" title="Mute/Unmute Voice Response" style="background:rgba(255,255,255,0.15);border:none;border-radius:50%;width:28px;height:28px;color:#ffffff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all 0.2s;">🔊</button>
+                <button class="chat-close" onclick="toggleChat()" title="Close chat panel">✕</button>
+            </div>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-message bot">
+                <div class="chat-avatar bot">🌱</div>
+                <div class="chat-bubble" id="welcome-message" data-i18n="chat_welcome">
+                    Namaste! I'm JeevanMitra AI — your smart farming companion. Ask me about crops, yields, diseases, or market prices! 🌿
+                </div>
+            </div>
+        </div>
+        <div class="quick-actions" id="quickActions">
+            <button class="quick-action" onclick="quickChat('crop')" data-i18n="quick_guide_btn">📖 Crop growing
+                guide</button>
+            <button class="quick-action" onclick="quickChat('price')" data-i18n="quick_mandi_btn">💰 Live mandi
+                prices</button>
+            <button class="quick-action" onclick="quickChat('disease')" data-i18n="quick_disease_btn">🔍 Plant disease
+                diagnosis</button>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Ask anything about your farm..."
+                data-i18n-placeholder="chat_input_placeholder" onkeypress="handleChatEnter(event)">
+            <button class="chat-voice" id="chatVoiceBtn" onclick="startChatVoice()" title="Voice input">🎤</button>
+            <button class="chat-send" onclick="sendChatMessage()">➤</button>
+        </div>
+    </div>
+
+    <button class="chat-launcher-btn" id="chatToggle" onclick="toggleChat()" title="Open Farm Assistant">
+        <span>🤖</span>
+        <span data-i18n="chat_launcher_text">Ask Mitra AI</span>
+    </button>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="toast" class="toast" style="display:none;"></div>
+
+    <!-- SYSTEM ARCHITECTURE VISUALIZER MODAL (Pillar 1, 2, 3) -->
+    <div id="architectureModal" class="api-modal-overlay" style="display:none;"
+        onclick="if(event.target===this)toggleArchitectureModal()">
+        <div class="arch-modal-box">
+            <div class="arch-modal-header">
+                <div>
+                    <h2>📐 FarmIntel: System Architecture & Data Pipeline</h2>
+                    <p style="font-size:0.85rem;color:#64748b;margin-top:0.25rem;">
+                        From Agronomic Prediction to Profit-Driven Crop Planning & Continuous Calibration
+                    </p>
+                </div>
+                <button class="modal-close-btn" onclick="toggleArchitectureModal()">✕</button>
+            </div>
+
+            <div class="arch-pipeline-container">
+                <!-- Pillar 1 -->
+                <div class="arch-pillar-card">
+                    <div class="pillar-tag">PILLAR 1</div>
+                    <div class="pillar-title">🌐 Enhanced Dynamic Inputs</div>
+                    <ul class="pillar-list">
+                        <li><strong>Geospatial & Climate API:</strong> Real-time Open-Meteo live weather + district GPS
+                            mapping</li>
+                        <li><strong>Market Intelligence API:</strong> Live APMC mandi commodity rates & 30-day price
+                            momentum</li>
+                        <li><strong>Input Cost Tracking:</strong> Granular unit costs for certified rootstocks,
+                            fertilizers, and trellis labor</li>
+                        <li><strong>Farmer Field Profile:</strong> Land size, soil type, water source, and capital
+                            budget</li>
+                    </ul>
+                </div>
+
+                <div class="arch-flow-arrow">➔</div>
+
+                <!-- Pillar 2 -->
+                <div class="arch-pillar-card active">
+                    <div class="pillar-tag">PILLAR 2</div>
+                    <div class="pillar-title">⚙️ Two-Stage ML Pipeline</div>
+                    <div class="pipeline-substage">
+                        <div class="substage-header">Stage 1: Agronomic Viability ("What Can Grow")</div>
+                        <p>Evaluates plot conditions against physiological crop affinities (soil pH/drainage, rainfall,
+                            water status, pest-break rotation). Predicts baseline yield range.</p>
+                    </div>
+                    <div class="pipeline-substage" style="margin-top:0.6rem;background:#f0fdf4;border-color:#bbf7d0;">
+                        <div class="substage-header" style="color:#15803d;">Stage 2: Profit Optimization ("What Will
+                            Sell & Profit")</div>
+                        <p>Deducts itemized input costs from expected APMC mandi revenue to compute Net Profit & Return
+                            on Investment (ROI %). Ranks options to maximize farmer returns within budget.</p>
+                    </div>
+                </div>
+
+                <div class="arch-flow-arrow">➔</div>
+
+                <!-- Pillar 3 -->
+                <div class="arch-pillar-card">
+                    <div class="pillar-tag">PILLAR 3</div>
+                    <div class="pillar-title">🔄 Continuous Learning Loop</div>
+                    <ul class="pillar-list">
+                        <li><strong>Post-Harvest Field Input:</strong> Farmers record actual harvested volume
+                            (tonnes/acre) and actual APMC price received</li>
+                        <li><strong>Bayesian Model Calibration:</strong> System computes localized yield and price
+                            multipliers</li>
+                        <li><strong>Adaptive Accuracy:</strong> Future predictions automatically calibrate to real-world
+                            plot conditions over time</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                style="margin-top:1.2rem;background:#f8fafc;padding:0.9rem 1.2rem;border-radius:12px;border:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.6rem;">
+                <span style="font-size:0.85rem;color:#334155;">✨ <em>Engineered for farmer empowerment and academic
+                        project review rigor.</em></span>
+                <button class="btn-primary-recommend" style="padding:0.5rem 1rem;font-size:0.85rem;"
+                    onclick="toggleArchitectureModal()">Close Visualizer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- COMPLETE CROP GROWING GUIDE MODAL (POP) -->
+    <!-- ============================================== -->
+    <div id="growingGuideModal" class="api-modal-overlay" style="display:none;"
+        onclick="if(event.target===this)closeGrowingGuideModal()">
+        <div class="guide-modal-box">
+            <div class="guide-modal-header">
+                <div class="guide-header-left">
+                    <span class="guide-crop-icon" id="guideCropIcon">🍇</span>
+                    <div>
+                        <h2 id="guideCropTitle">Grapes — Complete Farmer's Growing Guide</h2>
+                        <p id="guideCropSubtitle">Standard Agronomic Package of Practices (POP) from Sowing to APMC
+                            Mandi</p>
+                    </div>
+                </div>
+                <div class="guide-header-actions">
+                    <button class="btn-guide-print" onclick="window.print()" data-i18n="btn_print_guide">🖨️ Print
+                        Guide</button>
+                    <button class="modal-close-btn" onclick="closeGrowingGuideModal()">✕</button>
+                </div>
+            </div>
+
+            <!-- Quick Agronomic Facts Strip -->
+            <div class="guide-specs-strip" id="guideSpecsStrip">
+                <!-- Injected dynamically by script.js in active language -->
+            </div>
+
+            <!-- Step-by-Step Practical Growing Roadmap -->
+            <div class="guide-steps-container" id="guideStepsContainer">
+                <!-- Injected dynamically by script.js in active language -->
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="guide-modal-footer">
+                <div class="guide-footer-tip">
+                    <span>💡</span>
+                    <span data-i18n="guide_advisory_text">Advisory: Aligned with ICAR & State Agricultural Universities
+                        (UAS) Package of Practices.</span>
+                </div>
+                <div class="guide-footer-btns">
+                    <button class="btn-guide-ai" onclick="askAiAboutCrop()" data-i18n="btn_ask_ai_crop">🤖 Ask Mitra AI
+                        about this crop</button>
+                    <button class="demo-chip" onclick="closeGrowingGuideModal()" data-i18n="btn_close">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- API Key Setup Modal -->
+    <div id="apiModal" class="api-modal-overlay" style="display:none;" onclick="if(event.target===this)closeApiModal()">
+        <div class="api-modal">
+            <h2>🌿 FarmIntel — AI Key Setup</h2>
+            <p style="font-size:0.9rem;color:#64748b;margin:0.5rem 0 1rem;">Enter your Groq AI key for intelligent
+                conversational answers:</p>
+            <input type="password" class="api-key-input" id="apiKeyInput" placeholder="gsk_..." autocomplete="off">
+            <div style="display:flex;gap:0.8rem;margin-top:1rem;">
+                <button class="btn-primary-recommend" style="flex:1;justify-content:center;" id="saveKeyBtn">Save &
+                    Activate</button>
+                <button class="demo-chip" style="flex:1;" id="skipKeyBtn">Demo Mode</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="agricultural_db.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
